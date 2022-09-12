@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+  <title>Todo 4</title>
+  <link href="../../resources/css/fore.css" rel="stylesheet">
+  <link href="../../resources/css/tutorial.css" rel="stylesheet">
+  <link href="../../resources/css/todo.css" rel="stylesheet">
+  <style>
+    fx-fore h1{
+      color:black
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <nav>
+    <a href="todo-3.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="todo-5.html">next</a>
+  </nav>
+  <nav class="bottom">
+    <a href="todo-3.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="todo-5.html">next</a>
+  </nav>
+
+  <h1>Add some style</h1>
+  <demo-snippet>
+    <template>
+      <fx-fore id="todo">
+        <fx-model id="record">
+          <fx-instance>
+            <data>
+              <task complete="false" due="2022-10-25">Prepare tutorial</task>
+              <task complete="false" due="2022-11-07">Fore tutorial at Declarative Amsterdam</task>
+            </data>
+          </fx-instance>
+        </fx-model>
+
+        <h1>Todo</h1>
+        <fx-repeat id="r-task" ref="task">
+          <template>
+            <div>
+              <fx-control ref="@complete" value-prop="checked" update-event="input">
+                <input class="widget" type="checkbox">
+              </fx-control>
+              <fx-control id="task" class="complete {@complete}" ref="."></fx-control>
+              <fx-control ref="@due">
+                <input type="date">
+              </fx-control>
+            </div>
+          </template>
+        </fx-repeat>
+      </fx-fore>
+    </template>
+  </demo-snippet>
+
+  <p>The stylesheet can be found in 'resources/css/todo.css'</p>
+
+</div>
+
+<script type="module">
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+  import '../index.js';
+</script>
+
+</body>
+</html>

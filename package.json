@@ -1,0 +1,21 @@
+{
+  "name": "Fore tutorial",
+  "description": "Fore tutorial project",
+  "license": "MIT",
+  "author": "my-component",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "start": "web-dev-server"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.1.21"
+  },
+  "dependencies": {
+    "@jinntec/fore": "github:Jinntec/Fore#dev",
+    "@polymer/iron-demo-helpers": "^3.1.0",
+    "jinn-codemirror": "github:JinnElements/jinn-codemirror",
+    "prismjs": "^1.29.0"
+  }
+}

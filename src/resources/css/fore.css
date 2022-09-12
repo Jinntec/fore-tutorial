@@ -1,0 +1,192 @@
+@import 'toastify.css';
+@import 'vars.css';
+
+html{
+  --inspector-bg:var(--paper-grey-300);
+  --inspector-pre-bg:var(--paper-grey-100);
+  --inspector-color:var(--paper-grey-800);
+  --inspector-instance-height:200px;
+  --inspector-handle-bg: var(--paper-blue-500);
+  --inspector-handle-width: 30px;
+
+}
+[unresolved]{
+  display: none;
+}
+[disabled] {
+  pointer-events: none;
+  cursor: default;
+}
+[refresh-on-view]{
+  /*opacity: 0;*/
+}
+[required]:after {
+  content: "*";
+  display: inline;
+  color: red;
+}
+
+fx-alert{
+  color:darkred;
+  font-size: 0.9rem;
+}
+
+/* case not displayed by default - if you want e.g. apply transitions you have to overwrite this rule with display='inline' or similar */
+fx-case{
+  display: none;
+}
+
+fx-output[readonly] img{
+  background: inherit;
+}
+
+.error{
+  background: var(--paper-red-500);
+}
+
+fx-control, fx-trigger , .fx-checkbox{
+  white-space: nowrap;
+  /* position: relative; */
+}
+
+/* ### FX-DIALOG STYLES ### */
+/* ### FX-DIALOG STYLES ### */
+/* ### FX-DIALOG STYLES ### */
+fx-dialog{
+  display: none;
+  opacity: 0;
+  width:100vw;
+  height: 100vh;
+  transition: opacity 1s linear;
+  z-index: -1;
+  transition: none;
+}
+fx-dialog.show{
+  display: block;
+  min-height: 200px;
+  border-radius: 0.5rem;
+  opacity: 1;
+  background:rgba(0,0,0,0.5);
+  z-index: 10;
+  transition: opacity 0.4s linear;
+}
+
+fx-dialog.show .dialog-content{
+  padding: 1rem;
+  width:fit-content;
+  height:fit-content;
+  border:thin solid;
+  border-radius: 0.3rem;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:translateX(-50%) translateY(-50%);
+  background: white;
+
+}
+fx-dialog a.close-dialog{
+  position: absolute;
+  right: 0.4rem;
+  top:0.2rem;
+  color:var(--paper-grey-900);
+  text-decoration: none;
+  font-size:1.2rem;
+}
+fx-dialog .action{
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+/* fx-fore{ */
+/*     opacity: 0; */
+/* } */
+/* fx-fore.fx-ready{ */
+/*     opacity: 1; */
+/* } */
+
+
+fx-group, fx-switch, fx-repeat, fx-dialog{
+  display: block;
+}
+
+fx-hint{
+  display: none;
+}
+
+fx-model, fx-model *, fx-model ::slotted(fx-instance), fx-instance{
+  display:none;
+}
+
+fx-trigger a[disabled] {
+  color:lightgrey;
+}
+fx-trigger img[disabled]{
+  filter:blur(2px);
+}
+
+
+fx-repeatitem{
+  position:relative;
+  opacity:1;
+  /*
+  -webkit-transition: opacity 3s;
+  -moz-transition: opacity 3s;
+  transition: opacity 3s;
+  */
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.isEmpty.visited .widget{
+  background: lightpink;
+}
+
+.loaded{
+  animation: fadein 0.3s forwards;
+}
+/* avoid flicker from nested lazily loaded elements */
+.loaded .loaded{
+  animation: none;
+  opacity: 1;
+}
+
+.logtree details{
+  padding:0.1rem 1rem;
+  margin:0;
+}
+.logtree details summary{
+
+}
+
+.nonrelevant{
+  opacity: 0;
+  height: 0;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  transition: opacity 0.4s;
+  /* should be not handled on animation-done or so */
+  display: none;
+}
+
+.submit-validation-failed .isEmpty .widget{
+  background: lightpink;
+}
+.vertical label{
+  display: block;
+}
+
+/* @keyframes fadein { */
+/*     0% { */
+/*         opacity:0; */
+/*     } */
+/*     100% { */
+/*         opacity:1; */
+/*     } */
+/* } */

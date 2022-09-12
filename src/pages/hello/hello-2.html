@@ -1,0 +1,91 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+  <title>Hello 2</title>
+  <link href="../../resources/css/fore.css" rel="stylesheet">
+  <link href="../../resources/css/tutorial.css" rel="stylesheet">
+</head>
+<body>
+<!--<img class="background" src="../resources/images/cool-background.svg">-->
+
+<div class="wrapper">
+  <nav>
+    <a href="hello-1.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="../clock/clock-1.html">next</a>
+  </nav>
+  <nav class="bottom">
+    <a href="hello-1.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="../clock/clock-1.html">next</a>
+  </nav>
+
+  <h1>Hello with Fore </h1>
+
+  <h2>What you write</h2>
+  <demo-snippet>
+    <template>
+      <style>
+        fx-output{
+          background: #00bcd4;
+          padding: 1rem;
+        }
+      </style>
+      <fx-fore>
+        <fx-output ref="greeting">Hello from Fore</fx-output>
+      </fx-fore>
+
+      <!--
+        import '../fore.js';
+      -->
+    </template>
+  </demo-snippet>
+
+  <h2>What you get</h2>
+  <demo-snippet>
+      <template>
+          <fx-fore>
+              <fx-model>
+                  <fx-instance>
+                      <data>
+                          <greeting>Hello from Fore</greeting>
+                      </data>
+                  </fx-instance>
+              </fx-model>
+              <fx-output ref="greeting"></fx-output>
+          </fx-fore>
+      </template>
+  </demo-snippet>
+
+  <h2>Key Facts</h2>
+
+  <ul>
+    <li>Fore is a set of HTML Web Components.</li>
+    <li>Architecture is inspired by XForms 2.0</li>
+    <li>When the Fore import gets loaded the Custom Elements are defined and their behavior gets attached.</li>
+    <li>Fore will start its lifecycle by setting up a model.</li>
+    <li><code>fx-output</code> outputs a bound value</li>
+    <li>If there is no model one will be created using the <code>ref</code> attributes to create data nodes.</li>
+  </ul>
+
+<!--
+  <div class="navLinks">
+    <a href="hello-1.html">prev</a>
+    <a href="../clock/clock-1.html">next</a>
+  </div>
+-->
+
+
+</div>
+
+<script type="module">
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+  import '../index.js';
+</script>
+
+</body>
+</html>

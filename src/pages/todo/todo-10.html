@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+  <title>Todo 11</title>
+  <link href="../../resources/css/fore.css" rel="stylesheet">
+  <link href="../../resources/css/tutorial.css" rel="stylesheet">
+  <link href="../../resources/css/todo.css" rel="stylesheet">
+  <style>
+    fx-fore h1 {
+      color: black
+    }
+
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <nav>
+    <a href="todo-9.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="todo-11.html">next</a>
+  </nav>
+  <nav class="bottom">
+    <a href="todo-9.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="todo-11.html">next</a>
+  </nav>
+
+  <h1>Add some informative calculated output</h1>
+  <demo-snippet>
+    <template>
+      <fx-fore>
+        <fx-send submission="load" event="model-construct-done"></fx-send>
+
+        <fx-model id="record">
+          <fx-instance>
+            <data>
+              <task complete="false" due="2022-10-25">Prepare tutorial</task>
+              <task complete="false" due="2022-11-07">Fore tutorial at Declarative Amsterdam</task>
+              <show-completed>false</show-completed>
+            </data>
+          </fx-instance>
+
+          <fx-bind ref="task" relevant="../show-completed='true' or ./@complete='false'">
+            <fx-bind ref="./text()" required="true()"></fx-bind>
+          </fx-bind>
+
+          <fx-submission id="save"
+                         url="localStore:todos"
+                         method="post"
+                         nonrelevant="keep">
+            <fx-message event="submit-done">Changes have been stored</fx-message>
+          </fx-submission>
+          <fx-submission id="load"
+                         url="localStore:todos"
+                         method="get">
+            <fx-message event="submit-done">Todos loaded from localStorage</fx-message>
+          </fx-submission>
+
+          <fx-instance id="helper">
+            <data>
+              <template>
+                <task complete="false" due=""></task>
+              </template>
+            </data>
+          </fx-instance>
+        </fx-model>
+
+        <h1>Todo
+          <fx-trigger class="btn add">
+            <button>+</button>
+            <fx-insert ref="task" origin="instance('helper')/template/task"></fx-insert>
+          </fx-trigger>
+        </h1>
+        <div class="info">
+          You have {count(instance()/task[@complete='true'])} completed tasks
+        </div>
+
+        <div class="info open">
+          {if(count(instance()/task[@complete='false'])!=0) then "You have " || count(instance()/task[@complete='false']) || " open tasks" else ""}
+        </div>
+
+        <div class="info big">
+          {if(count(instance()/task[@complete='false'])=0) then "You're all done!" else ""}
+        </div>
+
+
+        <fx-action event="value-changed">
+          <fx-send submission="save"></fx-send>
+        </fx-action>
+
+        <fx-repeat id="r-task" ref="task">
+          <template>
+            <div>
+              <fx-control ref="@complete" value-prop="checked" update-event="input">
+                <input class="widget" type="checkbox">
+              </fx-control>
+              <fx-control id="task" class="complete {@complete}" ref="."></fx-control>
+              <fx-control ref="@due">
+                <input type="date">
+              </fx-control>
+              <fx-trigger class="btn delete">
+                <button>x</button>
+                <fx-action>
+                  <fx-delete ref="."></fx-delete>
+                  <fx-send submission="save"></fx-send>
+                </fx-action>
+              </fx-trigger>
+            </div>
+          </template>
+        </fx-repeat>
+        <fx-control id="switch" ref="show-completed" value-prop="checked" update-event="input">
+          <label for="showcompleted">show completed</label>
+          <input id="showcompleted" type="checkbox" class="widget">
+        </fx-control>
+
+      </fx-fore>
+    </template>
+  </demo-snippet>
+
+</div>
+
+<script type="module">
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+  import '../index.js';
+</script>
+
+</body>
+</html>

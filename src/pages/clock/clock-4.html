@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+
+  <title>Clock-4</title>
+
+  <link href="../../resources/css/fore.css" rel="stylesheet">
+  <link href="../../resources/css/clock.css" rel="stylesheet">
+  <link href="../../resources/css/tutorial.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="wrapper">
+  <nav>
+    <a href="clock-3.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="clock-5.html">next</a>
+  </nav>
+  <nav class="bottom">
+    <a href="clock-3.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="clock-5.html">next</a>
+  </nav>
+
+  <h1>Getting the time - a custom function</h1>
+  <demo-snippet>
+    <template>
+      <fx-fore>
+        <fx-model>
+          <fx-instance>
+            <data>
+              <time>12:00:00</time>
+            </data>
+          </fx-instance>
+
+          <fx-function signature="now() as xs:string" type="text/javascript">
+            const now = new Date();
+            return `${now.getHours()}:${String(now.getMinutes()).padStart(2,
+            '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+          </fx-function>
+
+
+        </fx-model>
+        {now()}
+      </fx-fore>
+    </template>
+  </demo-snippet>
+
+  <h2>Key Facts</h2>
+
+  <ul>
+    <li>Custom functions can be defined in the model and be used throughout the scope of Fore</li>
+    <li>Custom functions can be of type <code>text/javascript</code>, <code>text/xpath</code>, <code>text/xquf</code> or <code>text/xquery</code></li>
+  </ul>
+
+  <h2>Exercise</h2>
+  <p>write an XPath function just saying 'hello'</p>
+
+  <details>
+    <summary>Solution</summary>
+    <demo-snippet>
+      <template>
+        <fx-function signature="helloXQ() as xs:string" type="text/xquery">
+          'hello'
+        </fx-function>
+      </template>
+    </demo-snippet>
+  </details>
+
+  <p>Write an XQuery function just saying 'hi'</p>
+  <details>
+    <summary>Solution</summary>
+    <demo-snippet>
+      <template>
+        <fx-function signature="helloJS() as xs:string" type="text/javascript">
+          return 'hello';
+        </fx-function>
+      </template>
+    </demo-snippet>
+  </details>
+
+
+</div>
+<script type="module">
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+  import '../index.js';
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+  <title>Todo 7</title>
+  <link href="../../resources/css/fore.css" rel="stylesheet">
+  <link href="../../resources/css/tutorial.css" rel="stylesheet">
+  <link href="../../resources/css/todo.css" rel="stylesheet">
+  <style>
+    fx-fore h1 {
+      color: black
+    }
+
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <nav>
+    <a href="todo-6.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="todo-8.html">next</a>
+  </nav>
+  <nav class="bottom">
+    <a href="todo-6.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="todo-8.html">next</a>
+  </nav>
+
+  <h1>Saving data</h1>
+  <demo-snippet>
+    <template>
+      <fx-fore>
+        <fx-model id="record">
+          <fx-instance>
+            <data>
+              <task complete="false" due="2022-10-25">Prepare tutorial</task>
+              <task complete="false" due="2022-11-07">Fore tutorial at Declarative Amsterdam</task>
+            </data>
+          </fx-instance>
+          <fx-submission id="save"
+                         url="localStore:todos"
+                         method="post">
+            <fx-message event="submit-done">Changes have been stored</fx-message>
+          </fx-submission>
+          <fx-instance id="helper">
+            <data>
+              <template>
+                <task complete="false" due=""></task>
+              </template>
+            </data>
+          </fx-instance>
+        </fx-model>
+
+        <h1>Todo
+          <fx-trigger class="btn add">
+            <button>+</button>
+            <fx-insert ref="task" origin="instance('helper')/template/task"></fx-insert>
+          </fx-trigger>
+        </h1>
+        <fx-action event="value-changed">
+          <fx-send submission="save"></fx-send>
+        </fx-action>
+
+        <fx-repeat id="r-task" ref="task">
+          <template>
+            <div>
+              <fx-control ref="@complete" value-prop="checked" update-event="input">
+                <input class="widget" type="checkbox">
+              </fx-control>
+              <fx-control id="task" class="complete {@complete}" ref="."></fx-control>
+              <fx-control ref="@due">
+                <input type="date">
+              </fx-control>
+              <fx-trigger class="btn delete">
+                <button>x</button>
+                <fx-action>
+                  <fx-delete ref="."></fx-delete>
+                  <fx-send submission="save"></fx-send>
+                </fx-action>
+              </fx-trigger>
+            </div>
+          </template>
+        </fx-repeat>
+      </fx-fore>
+    </template>
+  </demo-snippet>
+
+  <h2>Key Facts</h2>
+  <ul>
+    <li>Submissions are for loading or sending data</li>
+    <li>Submissions fire events 'submit', 'submit-done', 'submit-error' events</li>
+    <li>Fore has a builtin 'localStore:' URL scheme which defines a key and writes to browsers' localStorage</li>
+    <li>As delete action won't fire 'value-changed' we have to explicitly send submission after a delete</li>
+  </ul>
+
+</div>
+
+<script type="module">
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+  import '../index.js';
+</script>
+
+</body>
+</html>

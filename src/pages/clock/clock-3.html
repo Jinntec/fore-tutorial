@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+
+    <title>Clock-3</title>
+
+    <link href="../../resources/css/fore.css" rel="stylesheet">
+    <link href="../../resources/css/clock.css" rel="stylesheet">
+  <link href="../../resources/css/tutorial.css" rel="stylesheet">
+  <style>
+    .demo{
+      min-height:20vh;
+      font-size: 1.6rem;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <nav>
+    <a href="clock-2.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="clock-4.html">next</a>
+  </nav>
+  <nav class="bottom">
+    <a href="clock-2.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="clock-4.html">next</a>
+  </nav>
+
+  <h1>Adding UI</h1>
+    <demo-snippet>
+        <template>
+            <fx-fore>
+                <fx-model>
+                    <fx-instance>
+                        <data>
+                            <time>12:00:00</time>
+                        </data>
+                    </fx-instance>
+                </fx-model>
+                {time}
+            </fx-fore>
+        </template>
+    </demo-snippet>
+
+  <h2>Key Facts</h2>
+
+  <ul>
+    <li>Template Expressions allow to output bound values</li>
+    <li>The expression language in Fore is XPath 3.1</li>
+  </ul>
+
+</div>
+<script type="module">
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+  import '../../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+  import '../index.js';
+</script>
+</body>
+</html>

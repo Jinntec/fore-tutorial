@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+
+  <title>Clock-5</title>
+
+  <link href="../../resources/css/fore.css" rel="stylesheet">
+  <link href="../../resources/css/clock.css" rel="stylesheet">
+  <link href="../../resources/css/tutorial.css" rel="stylesheet">
+  <script type="module">
+    import '../../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+    import '../../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+    import '../index.js';
+  </script>
+</head>
+
+<body>
+<div class="wrapper">
+  <nav>
+    <a href="clock-4.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="clock-6.html">next</a>
+  </nav>
+  <nav class="bottom">
+    <a href="clock-4.html">prev</a>
+    <a href="../index.html">overview</a>
+    <a href="clock-6.html">next</a>
+  </nav>
+
+  <h1>Updating the time - introduction to Actions</h1>
+
+
+  <p>live coding for while / delay</p>
+  <demo-snippet>
+    <template>
+      <fx-fore>
+        <fx-action event="ready">
+          <fx-setvalue ref="time" value="now()"></fx-setvalue>
+        </fx-action>
+
+        <fx-model>
+          <fx-instance>
+            <data>
+              <time>12:00:00</time>
+            </data>
+          </fx-instance>
+
+          <fx-function signature="now() as xs:string" type="text/javascript">
+            const now = new Date();
+            return `${now.getHours()}:${String(now.getMinutes()).padStart(2,
+            '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+          </fx-function>
+
+        </fx-model>
+        {time}
+      </fx-fore>
+    </template>
+  </demo-snippet>
+
+  <h2>Key Facts</h2>
+
+  <ul>
+    <li>Actions can set values, insert or delete nodes, output messages and more</li>
+    <li>Actions can be looped, conditional or be delayed</li>
+    <li>Actions are event handlers for certain lifecycle events</li>
+    <li>When Fore has initialized it emits a 'ready' event that can be used to start some processing</li>
+    <li>Actions can be grouped with the <code>fx-action</code> element</li>
+    <li><code>fx-setvalue</code> changes the value of a bound node in the model</li>
+    <li><code>fx-refresh</code> updates the UI to reflect the state of the model</li>
+  </ul>
+
+
+  <h2>Exercise</h2>
+  <p>display a message on event <code>ready</code> with 'tick' as text</p>
+  <p>add while and delay</p>
+
+
+</div>
+
+</body>
+</html>
