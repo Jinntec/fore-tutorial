@@ -38,6 +38,7 @@
       <fx-fore>
         <fx-action event="ready">
           <fx-setvalue ref="time" value="now()"></fx-setvalue>
+          <fx-refresh></fx-refresh>
         </fx-action>
 
         <fx-model>
@@ -74,10 +75,14 @@
 
   <h2>Exercise</h2>
   <p>display a message on event <code>ready</code> with 'tick' as text</p>
+<!-- <fx-message></fx-message> -->
   <p>add while and delay</p>
+<!-- <fx-action event="ready" while="true()" delay="1000"> -->
+<!-- <fx-refresh></fx-refresh> -->
 
 
 </div>
+
 
 </body>
 </html>
